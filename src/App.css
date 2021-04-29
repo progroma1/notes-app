@@ -59,6 +59,7 @@ button:hover {
   justify-content: space-between;
   padding: 25px;
   background-color: #F8F3F1;
+  border-bottom: 1px solid #ddd;
 }
 .app-sidebar-header h1 {
   margin: 0;
@@ -92,7 +93,7 @@ button:hover {
 }
 .app-sidebar-note.active,
 .app-sidebar-note.active small {
-  background: #08c;
+  background: #F7CD4B;
   color: white;
 }
 
@@ -164,22 +165,29 @@ textarea {
 }
 
 
+.main {
+  width: 100%;
+}
+
 
 .main-header {
   display: flex;
-  justify-content: space-around;
   padding: 25px;
   border-bottom: 1px solid #ddd;
+  min-width: 100%;
+  background-color: #F8F3F1;
 }
 
-.main-header .add-button {
-  flex-basis: 1;
-}
 
+.add-button {
+  flex-grow: 1;
+}
 
 .search-panel {
-  right: 0;
+  align-self: center;
 }
 
-
-
+#title, #body {
+  outline: none;
+  border: none;
+}
