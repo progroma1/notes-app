@@ -3,8 +3,8 @@ import uuid from 'react-uuid';
 import './App.css';
 
 import Sidebar from './components/sideBar/sidebar.component';
-import Mainbar from './components/mainBar/mainbar.component';
-
+import Header from './components/header/header.component';
+import EditPanel from './components/editPanel/editpanel.component.jsx';
 
 function App() {
 
@@ -12,10 +12,12 @@ function App() {
   const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
 
+  const [listView, galleryView] = useState(true);
+
   const onAddNote = () => {
-    const newNote = {
+    const newNote = {  
       id: uuid(),
-      title: "Untitled note",
+      title: "",
       body: "",
       lastModified: Date.now()
     };
@@ -28,22 +30,56 @@ function App() {
     setNotes(notes.filter( (note) => note.id !== idToDelete ));
   }
 
+  const onUpdateNote = (updatedNote) => {
+    const updatedNotesArray = notes.map((note) => {
+      if (note.id === activeNote) {
+        return updatedNote;
+      }
+      return note;
+    });
+
+    setNotes(updatedNotesArray);
+  }
 
   const getActiveNote = () => {
     return notes.find((note) => note.id === activeNote);
   }
 
+/*
+  const makeListView = () = {
 
+  }
+
+  const makeGalleryView = () = {
+    
+  }
+
+  */
   return (
     <div className="App">
-     <Sidebar 
-     notes={notes} 
-     onAddNote={onAddNote} 
-     onDeleteNote={onDeleteNote}
-     activeNote={activeNote}
-     setActiveNote={setActiveNote}
-     />
-     <Mainbar activeNote={getActiveNote()} />
+    <Header
+    onAddNote={onAddNote}
+    activeNote={activeNote}
+    onDeleteNote={onDeleteNote}
+    />
+
+  
+
+
+    <div className="list-view">
+        <Sidebar 
+          notes={notes}
+          activeNote={activeNote}
+          setActiveNote={setActiveNote}
+        />
+        <EditPanel 
+          activeNote={getActiveNote()} 
+          onUpdateNote={onUpdateNote}
+          onAddNote={onAddNote}
+        />
+    </div>
+     
+     
     </div>
   );
 }

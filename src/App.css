@@ -40,7 +40,7 @@ button:hover {
 }
 
 .App {
-  display: flex;
+ /* display: flex; */
   border: 1px solid #000;
   box-shadow: 1px 1px 2px #000;
 
@@ -54,20 +54,10 @@ button:hover {
   border-right: 1px solid #ddd;
 }
 
-.app-sidebar-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 25px;
-  background-color: #F8F3F1;
-  border-bottom: 1px solid #ddd;
-}
-.app-sidebar-header h1 {
-  margin: 0;
-}
+
 
 .app-sidebar-notes {
   height: calc(100vh - 78px);
-  overflow-y: scroll;
 }
 .app-sidebar-note {
   padding: 25px;
@@ -172,9 +162,8 @@ textarea {
 
 .main-header {
   display: flex;
-  padding: 25px;
+  /*padding: 25px;*/
   border-bottom: 1px solid #ddd;
-  min-width: 100%;
   background-color: #F8F3F1;
 }
 
@@ -190,4 +179,40 @@ textarea {
 #title, #body {
   outline: none;
   border: none;
+}
+
+
+.header {
+  width: 100%;
+  display: flex;
+  background-color: #F8F3F1;
+  border-bottom: 1px solid #ddd;
+  padding: 25px 30px;
+}
+
+
+.main-part-header {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  
+}
+
+
+.app-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  background-color: #F8F3F1;
+  width: 30%;
+  border-right: 1px solid #ddd;
+}
+
+
+.main-bar {
+  display: flex;
+}
+
+.list-view {
+  display: flex;
 }
