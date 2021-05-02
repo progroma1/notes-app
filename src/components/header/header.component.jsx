@@ -1,17 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Search from '../search/search.component';
-import DropDown from '../dropDown/dropdown.component';
+import DropdownButton from '../dropDown/dropdown.component';
 
 
-const Header = ({onDeleteNote, activeNote, onAddNote, listView, galleryView}) => {
+const Header = ({onDeleteNote, activeNote, onAddNote, term, searchKeyword, notes}) => {
+    
     return (
         <div className="header">
             <div className="app-sidebar-header">
+                
                     <div className="list-view">
-                        <img className="sidebar-img" src="img/sidebar-list.png" alt="list"/>
+                        <Link to='/list-view'>
+                            <img className="sidebar-img" src="img/sidebar-list.png" alt="list"/>
+                        </Link>                      
                     </div>
-                    <div className="list-view">
-                        <img  className="sidebar-img" src="img/sidebar-tabs.png" alt="tabs"/>
+
+                    <div className="gallery-view">
+                        <Link to='/gallery-view'> 
+                            <img  className="sidebar-img" src="img/sidebar-tabs.png" alt="tabs"/>
+                        </Link>
+                        
                     </div>
                     <div className="sidebar-remove" onClick={() => onDeleteNote(activeNote)}>
                         <img  className="sidebar-img" src="img/sidebar-remove.png" alt="remove"/>
@@ -22,10 +32,20 @@ const Header = ({onDeleteNote, activeNote, onAddNote, listView, galleryView}) =>
                     <img  className="addbutton-img" src="img/addButton.png" alt="tabs"/>
                 </div>
                 <div className="dropdown-panel">
-                    <DropDown />
+
+
+
+                
+                    <DropdownButton
+                    
+                    />
                 </div>
                 <div className="search-panel">
-                    <Search />
+                    <Search 
+                    term={term}
+                    searchKeyword={searchKeyword}
+                    notes={notes}
+                    />
                 </div>  
             </div>
 

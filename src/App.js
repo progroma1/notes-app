@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Route, Redirect, Switch, BrowserRouter as Router} from 'react-router-dom';
 import uuid from 'react-uuid';
 import './App.css';
 
 import Sidebar from './components/sideBar/sidebar.component';
 import Header from './components/header/header.component';
 import EditPanel from './components/editPanel/editpanel.component.jsx';
+import Gallery from './components/gallery/gallery.component';
+
+import firebase from './firebase';
+import 'firebase/firestore';
+import 'firebase/database';
 
 function App() {
 
-  /// temporar store of notes
   const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
-
-  const [listView, galleryView] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const onAddNote = () => {
     const newNote = {  
@@ -23,8 +28,8 @@ function App() {
     };
 
     setNotes([newNote, ...notes]);
-    console.log('add new note');
   };
+
 
   const onDeleteNote = (idToDelete) => {
     setNotes(notes.filter( (note) => note.id !== idToDelete ));
@@ -45,43 +50,86 @@ function App() {
     return notes.find((note) => note.id === activeNote);
   }
 
-/*
-  const makeListView = () = {
 
-  }
-
-  const makeGalleryView = () = {
-    
-  }
+  /*
+  useEffect (  () => {
+    const noteRef = firebase.database().ref("notes");
+    noteRef.on('value', (snapshot) => {
+      console.log(snapshot.val());
+    })
+  }, []);
 
   */
-  return (
-    <div className="App">
-    <Header
-    onAddNote={onAddNote}
-    activeNote={activeNote}
-    onDeleteNote={onDeleteNote}
-    />
 
-  
-
-
-    <div className="list-view">
-        <Sidebar 
-          notes={notes}
-          activeNote={activeNote}
-          setActiveNote={setActiveNote}
-        />
-        <EditPanel 
-          activeNote={getActiveNote()} 
-          onUpdateNote={onUpdateNote}
-          onAddNote={onAddNote}
-        />
-    </div>
-     
-     
-    </div>
-  );
+const searchHandler = (searchTerm) => {
+  setSearchTerm(searchTerm);
+  if (searchTerm !== "") {
+    const newListOfNotes = notes.filter( (note) => {
+      return Object.values(note)
+      .join("")
+      .toLocaleLowerCase()
+      .includes(searchTerm.toLowerCase());
+    });
+    setSearchResults(newListOfNotes);
+  } else {
+    setSearchResults(notes);
+  }
 }
+
+console.log(searchHandler);
+
+  return (
+    <Router>
+        <div className="App">
+          <Header
+            onAddNote={onAddNote}
+            activeNote={activeNote}
+            onDeleteNote={onDeleteNote}
+            term={searchTerm}
+            searchKeyword={searchHandler}
+            notes={searchTerm.length < 1 ? notes : searchResults}
+          />
+
+        <Switch>
+          <Route exact path="/">
+                <Redirect to="/list-view"/>
+          </Route>
+          <Route exact path='/list-view'>
+            <div className="list-view">
+            <Sidebar 
+              notes={notes}
+              activeNote={activeNote}
+              setActiveNote={setActiveNote}
+              searchHandler={searchHandler}
+            />
+            <EditPanel 
+              activeNote={getActiveNote()} 
+              onUpdateNote={onUpdateNote}
+              onAddNote={onAddNote}
+            />
+            </div>
+          </Route>
+          <Route path='/gallery-view'>
+            <Gallery 
+            notes={notes}
+            activeNote={activeNote}
+            setActiveNote={setActiveNote}
+            />
+          </Route>
+          <Route path='/gallery-view/:id'>
+            <EditPanel 
+              activeNote={getActiveNote()} 
+              onUpdateNote={onUpdateNote}
+              onAddNote={onAddNote}
+            />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+    
+  )
+ 
+}
+
 
 export default App;

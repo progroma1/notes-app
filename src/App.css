@@ -1,50 +1,30 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
-
+/* GLOBAL STYLES */
 * {
   box-sizing: border-box;
 }
 
-/* GLOBAL STYLES */
-
 body {
   padding: 2% 5% 0 5%;
   z-index: 1;
+  background-image: url('assets/img/bg1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
-/*body,*/
 .App {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   overflow: hidden;
   font-size: 16px;
   border-radius: 25px;
   background: #fff;
   z-index: 2;
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 2px #ddd;
 
 }
 
-button {
-  background: none;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-  cursor: pointer;
-  color: #08c;
-}
-button:hover {
-  color: #04c;
-}
-
-.App {
- /* display: flex; */
-  border: 1px solid #000;
-  box-shadow: 1px 1px 2px #000;
-
-}
 
 /* SIDEBAR STYLES */
 
@@ -56,9 +36,6 @@ button:hover {
 
 
 
-.app-sidebar-notes {
-  height: calc(100vh - 78px);
-}
 .app-sidebar-note {
   padding: 25px;
   cursor: pointer;
@@ -83,8 +60,8 @@ button:hover {
 }
 .app-sidebar-note.active,
 .app-sidebar-note.active small {
-  background: #F7CD4B;
-  color: white;
+  background: #DCDCDA;
+  color: #000;
 }
 
 /* NOTE EDITOR/PREVIEW (MAIN) STYLES */
@@ -118,7 +95,7 @@ textarea {
   border: 1px solid #ddd;
   margin-bottom: 20px;
   width: 100%;
-  height: calc(50vh - 130px);
+  height: 100%;
   padding: 10px;
   resize: none;
   font-size: inherit;
@@ -129,48 +106,22 @@ textarea {
   font-size: 2rem;
 }
 
-/* Preview */
-.app-main-note-preview {
-  border-top: 1px solid #ddd;
-  overflow-y: scroll;
-  background: rgba(0, 0, 0, 0.02);
-}
 
-.preview-title {
-  padding: 25px 25px 0 25px;
-  margin: 0;
-}
-
-.markdown-preview {
-  padding: 0 25px 25px 25px;
-  font-size: 1rem;
-  line-height: 2rem;
-}
-
-
-.sidebar-img, .dropdown-img, .addbutton-img  {
+.sidebar-img, .dropdown-img, .addbutton-img {
   width: 30px;
   height: 30px;
   margin: 10px;
 }
 
-
-.main {
-  width: 100%;
-}
-
-
 .main-header {
   display: flex;
-  /*padding: 25px;*/
   border-bottom: 1px solid #ddd;
   background-color: #F8F3F1;
+  width: 70%;
 }
 
 
-.add-button {
-  flex-grow: 1;
-}
+
 
 .search-panel {
   align-self: center;
@@ -185,7 +136,7 @@ textarea {
 .header {
   width: 100%;
   display: flex;
-  background-color: #F8F3F1;
+  background-color: #F2F2F0;
   border-bottom: 1px solid #ddd;
   padding: 25px 30px;
 }
@@ -193,26 +144,165 @@ textarea {
 
 .main-part-header {
   display: flex;
-  align-self: center;
-  justify-content: space-between;
-  
+  width: 100%;
 }
 
 
 .app-sidebar-header {
   display: flex;
-  justify-content: space-between;
-  align-self: center;
-  background-color: #F8F3F1;
+  justify-content: flex-start;
   width: 30%;
   border-right: 1px solid #ddd;
 }
 
 
-.main-bar {
+.main-bar, .list-view {
   display: flex;
 }
 
-.list-view {
+.main-edit-panel {
+  width: 100%;
+}
+
+
+.hour-exc {
   display: flex;
+  align-items: center;
+}
+
+.hour-exc p {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.main-part-header .add-button {
+  width: 75%;
+}
+
+
+
+
+.app-search input {
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+
+.app-sidebar-header .gallery-view {
+  width: 70%;
+}
+
+
+.app-sidebar-note {
+  margin: 10px;
+  border-radius:5px;
+}
+
+
+
+.last-modified {
+  text-align: center;
+}
+
+.note-meta {
+  font-weight: 500;
+}
+
+.gallery-notes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+
+
+
+.app-gallery-text {
+  width: 200px;
+  height: 100px;
+  padding: 5px;
+  margin: 25px 25px 5px ;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.app-gallery-text:hover {
+  border: 1px solid yellow;
+}
+
+.gallery-note-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-gallery-note p {
+  margin: 2px 0;
+  font-size: 7px;
+}
+.app-gallery-note small {
+  display: block;
+  color: #999;
+}
+
+
+.app-gallery-note.active,
+.app-gallery-note.active small {
+  background: #DCDCDA;
+  color: #000;
+}
+
+.app-gallery-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.dropdown-button-wrapper {
+  position: relative;
+  
+}
+
+.dropdown-list-wrapper {
+  position: absolute;
+  
+}
+
+.dropdown-list {
+  background-color: #ddd;
+  border-radius:5px;
+}
+
+.dropdown-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  
+}
+
+.dropdown-list-item {
+  padding: 5px;
+  margin: 5px;
+  border-radius:5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dropdown-list-item:hover {
+  background-color: #E9C541;
+}
+.dropdown-list-img {
+  width: 15px;
+  height: 15px;
+  margin: 3px;
 }

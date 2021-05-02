@@ -23,6 +23,13 @@ const EditPanel = ({activeNote, onUpdateNote}) => {
     return (
         <div className="main-edit-panel">
                 <div className="app-main-note-edit">
+                    <div className="last-modified">{
+                        new Date(activeNote.lastModified).toLocaleDateString("uk-UA", {
+                            hour: "2-digit",
+                            minute: "2-digit"
+                       })}
+                        
+                        </div>
                     <input 
                     type="text" 
                     id="title" 
