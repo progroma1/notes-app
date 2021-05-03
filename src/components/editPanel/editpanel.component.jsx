@@ -9,7 +9,6 @@ const EditPanel = ({activeNote, onUpdateNote}) => {
         });
     }
 
-
     if (!activeNote) return (
         <div>
             <div className="no-active-note">
@@ -18,30 +17,27 @@ const EditPanel = ({activeNote, onUpdateNote}) => {
         </div>
     )
 
-
-
     return (
         <div className="main-edit-panel">
-                <div className="app-main-note-edit">
-                    <div className="last-modified">{
-                        new Date(activeNote.lastModified).toLocaleDateString("uk-UA", {
-                            hour: "2-digit",
-                            minute: "2-digit"
-                       })}
-                        
-                        </div>
-                    <input 
+            <div className="app-main-note-edit">
+                <div className="last-modified">{
+                    new Date(activeNote.lastModified).toLocaleDateString("uk-UA", {
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    })} 
+                </div>
+                <input 
                     type="text" 
                     id="title" 
                     value={activeNote.title}
                     onChange={ (e) => onEditField("title", e.target.value)}
                     autoFocus
-                    placeholder="Write your title... " />
-                    <textarea name="" id="body" rows="5" placeholder="Write your notes here..." 
+                    placeholder="Write title... " />
+                <textarea name="" id="body" rows="5" placeholder="Write apple notes here..." 
                     value={activeNote.body}
                     onChange={ (e) => onEditField("body", e.target.value)}
-                    ></textarea>
-                </div> 
+                ></textarea>
+            </div> 
         </div>
     )
 }

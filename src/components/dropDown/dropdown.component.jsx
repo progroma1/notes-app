@@ -9,9 +9,8 @@ const onButtonClick = () => {
     return (
         <div className="dropdown-button-wrapper">
             <div className="list-view" onClick={ (e) => e.currentTarget && onButtonClick() }>
-                            <img className="sidebar-img" src="img/dropdown.png" alt="list"/>              
+                <img className="sidebar-img" src="img/dropdown.png" alt="list"/>              
             </div>
-
             {isOpen && (
                 <div className="dropdown-list-wrapper opened">
                     <ul className="dropdown-list">
@@ -40,6 +39,6 @@ const onButtonClick = () => {
             )}
         </div>
     )
-}
+};
 
 export default DropdownButton;

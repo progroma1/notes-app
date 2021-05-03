@@ -7,6 +7,6 @@ const Mainbar = () => {
         <Sidebar />
         <EditPanel />
     </div>
-}
+};
 
 export default Mainbar;

@@ -25,17 +25,19 @@ body {
 
 }
 
+#title, #body {
+  outline: none;
+  border: none;
+}
+
 
 /* SIDEBAR STYLES */
 
 .app-sidebar {
-  width: 30%;
+  width: 31%;
   height: 100vh;
   border-right: 1px solid #ddd;
 }
-
-
-
 .app-sidebar-note {
   padding: 25px;
   cursor: pointer;
@@ -43,9 +45,6 @@ body {
 .sidebar-note-title {
   display: flex;
   justify-content: space-between;
-}
-.app-sidebar-note button {
-  color: crimson;
 }
 .app-sidebar-note p {
   margin: 10px 0;
@@ -64,7 +63,7 @@ body {
   color: #000;
 }
 
-/* NOTE EDITOR/PREVIEW (MAIN) STYLES */
+/* NOTES EDITOR */
 
 .app-main {
   width: 70%;
@@ -74,17 +73,14 @@ body {
 .app-main-note-preview {
   height: 50vh;
 }
-
 .no-active-note {
-  width: 70%;
   height: 100vh;
   line-height: 100vh;
   text-align: center;
   font-size: 2rem;
   color: #999;
+  padding: 20px;
 }
-
-/* Editing */
 .app-main-note-edit {
   padding: 25px;
 }
@@ -105,34 +101,12 @@ textarea {
   height: 50px;
   font-size: 2rem;
 }
-
-
-.sidebar-img, .dropdown-img, .addbutton-img {
-  width: 30px;
-  height: 30px;
-  margin: 10px;
-}
-
-.main-header {
-  display: flex;
-  border-bottom: 1px solid #ddd;
-  background-color: #F8F3F1;
+.main-edit-panel {
   width: 70%;
 }
 
 
-
-
-.search-panel {
-  align-self: center;
-}
-
-#title, #body {
-  outline: none;
-  border: none;
-}
-
-
+/* HEADER */
 .header {
   width: 100%;
   display: flex;
@@ -140,48 +114,45 @@ textarea {
   border-bottom: 1px solid #ddd;
   padding: 25px 30px;
 }
-
-
-.main-part-header {
+.main-header {
   display: flex;
-  width: 100%;
+  border-bottom: 1px solid #ddd;
+  background-color: #F8F3F1;
+  width: 70%;
+  
 }
-
-
 .app-sidebar-header {
   display: flex;
   justify-content: flex-start;
   width: 30%;
   border-right: 1px solid #ddd;
 }
-
-
+.main-part-header {
+  display: flex;
+  width: 70%;
+}
 .main-bar, .list-view {
   display: flex;
 }
-
-.main-edit-panel {
-  width: 100%;
+.sidebar-img, .dropdown-img, .addbutton-img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
 }
-
-
+.search-panel {
+  align-self: center;
+}
 .hour-exc {
   display: flex;
   align-items: center;
 }
-
 .hour-exc p {
   font-size: 12px;
   margin-left: 5px;
 }
-
 .main-part-header .add-button {
   width: 75%;
 }
-
-
-
-
 .app-search input {
   width: 250px;
   border-radius: 5px;
@@ -189,18 +160,14 @@ textarea {
   padding: 8px;
 }
 
-
 .app-sidebar-header .gallery-view {
   width: 70%;
 }
-
 
 .app-sidebar-note {
   margin: 10px;
   border-radius:5px;
 }
-
-
 
 .last-modified {
   text-align: center;
@@ -210,6 +177,7 @@ textarea {
   font-weight: 500;
 }
 
+/* GALLERY */
 .gallery-notes {
   display: flex;
   align-items: center;
@@ -218,9 +186,6 @@ textarea {
   height: 100%;
   flex-wrap: wrap;
 }
-
-
-
 
 .app-gallery-text {
   width: 200px;
@@ -240,6 +205,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
 }
 
 .app-gallery-note p {
@@ -263,6 +229,9 @@ textarea {
   flex-direction: column;
   align-items: center;
 }
+
+
+/*DROPDOWN*/
 
 
 .dropdown-button-wrapper {

@@ -1,24 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
-
-
-const Search = (props) => {
-const inputEl = useRef("");
-const getSearchTerm = () => {
-    props.searchKeyword(inputEl.current.value);
-}
-
+const Search = ({ setSearchResults }) => {
     return (
         <div className="app-search">
             <input className="search-input" 
             placeholder='Пошук' 
-            type="text" 
-            value={props.term}
-            onChange={getSearchTerm}
-            ref={inputEl}
+            type="text"
+            onChange={ (event) => setSearchResults(event.target.value)}
             />
         </div>
-    );
-}
+    )
+};
 
 export default Search;
